@@ -1,6 +1,8 @@
 const myLibrary = [];
-let booksGrid = document.querySelector(".books");
-let example = document.createElement("div");
+const booksGrid = document.querySelector(".books");
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".open");
+const closeButton = document.querySelector(".close");
 
 function Book(title,author,pages,read) {
     this.title = title;
@@ -18,16 +20,39 @@ function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(newBook);
 } 
 
-// function {
-
-// }
-
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295 pages","not read yet");
 const iRobot = addBookToLibrary("I Robot", "Isaac Asimov", "758 pages", "not read yet");
 
-console.log(myLibrary);
-example.innerHTML = "Im a div from Javascript :)";
-booksGrid.appendChild(example);
+function libraryInformation() {
+    let libraryHtml = "";
+        for (let key in myLibrary) {
+            libraryHtml += "<div>" + myLibrary[key].title;
+            libraryHtml += "<ul>";
+            for (let item in myLibrary[key]) {
+                if (item === "title") {
+                    continue
+                }
+                libraryHtml += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
+            }
+            libraryHtml += "</ul>" + "</div>";
+        }
+        booksGrid.innerHTML = libraryHtml;
+        console.log(libraryHtml);
+    }
+
+libraryInformation();
+
+showButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});
+
+
+
+
 
 
 

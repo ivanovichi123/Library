@@ -101,3 +101,10 @@ html {
   background-color: lightgreen;
 }
 
+dialog {
+  margin: 0;
+  top: 100px;
+  left: 0%;
+  transform: translateX(-72%);
+  text-wrap: wrap;
+ }
