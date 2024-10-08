@@ -14,13 +14,36 @@
         </div>
         <div class="form">
             <dialog>
-                <button class="close">Close button</button>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio soluta sapiente, <br>ipsum porro quasi eos eum illo blanditiis id sed. Omnis voluptates ipsa nam modi incidunt. Doloribus deserunt tempora rem.</p>
+                <form action="main.js" method="dialog">
+                    <p>
+                        <label for="example" aria-label="">Select an option</label>
+                        <select name="the_example" id="example">
+                            <option value="default">choose....</option>
+                            <option value="shrimp">shrimp</option>
+                            <option value="panda">panda</option>
+                            <option value="spider">spider</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="example2">ANother example</label>
+                        <select name="the_second_example" id="example2">
+                            <option value="default">hi....</option>
+                            <option value="apple">apple</option>
+                            <option value="banana">banana</option>
+                        </select>
+                    </p>
+                    <button type="submit" id="submitButton" value="default">Submit</button>
+                    <button class="close" formmethod="dialog" value="close">Close button</button>
+                </form>
             </dialog>
-            <button class="open">Open button</button>
+            <button class="open">Add a new book!</button>
+            <output>ayuda</output>
         </div>
         <div class="books">
         </div>
     </div>
 </body>
 </html>
+
+<!-- <label for="example2">Hi I am the example</label>
+<input type="text" id="example2" placeholder="Ivan" name="Ivan"> -->

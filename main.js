@@ -2,7 +2,10 @@ const myLibrary = [];
 const booksGrid = document.querySelector(".books");
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".open");
-const closeButton = document.querySelector(".close");
+const outputBox = document.querySelector("output");
+const submitButton = document.querySelector("#submitButton");
+const text = document.querySelector("#example");
+const text2 = document.querySelector("#example2")
 
 function Book(title,author,pages,read) {
     this.title = title;
@@ -12,10 +15,6 @@ function Book(title,author,pages,read) {
 }
 
 function addBookToLibrary(title,author,pages,read) {
-    // let title = prompt("Insert title");
-    // let author = prompt("Insert author");
-    // let pages = prompt("Insert pages");
-    // let read = prompt("Yes or no");
     let newBook = new Book(title,author,pages,read);
     myLibrary.push(newBook);
 } 
@@ -38,17 +37,36 @@ function libraryInformation() {
         }
         booksGrid.innerHTML = libraryHtml;
         console.log(libraryHtml);
-    }
+}
 
-libraryInformation();
+
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
 });
 
-closeButton.addEventListener("click", () => {
-    dialog.close();
+dialog.addEventListener("close", () => {
+    outputBox.value = 
+    dialog.returnValue === "default" 
+    ? "No return value" 
+    : `ReturnValue: ${dialog.returnValue}`;
+    console.log(dialog.returnValue);
+    libraryInformation();
 });
+
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    let title = text.value;
+    let author = text2.value;
+    let pages = "123";
+    let read = "yes";
+    console.log(title,author,pages,read);
+    addBookToLibrary(title,author,pages,read);
+    dialog.close(text.value);
+})
+
+libraryInformation();
+
 
 
 

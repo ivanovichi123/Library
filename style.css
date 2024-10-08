@@ -74,7 +74,7 @@ html {
 .container {
   display: grid;
   grid-template-columns: 2fr 5fr;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 100px 7fr 1fr;
 }
 
 .header {
@@ -85,8 +85,11 @@ html {
 }
 
 .form {
-  grid-column: 1/3;
+  grid-column: 1/2;
   grid-row: 2/3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .books {
@@ -104,7 +107,20 @@ html {
 dialog {
   margin: 0;
   top: 100px;
-  left: 0%;
-  transform: translateX(-72%);
   text-wrap: wrap;
+  width: 25%;
+ }
+
+ ::backdrop {
+  background-color: lightgray;
+  opacity: 0.75;
+ }
+
+
+
+ .open {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-self: center;
+  justify-self: center;
  }
