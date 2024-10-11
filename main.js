@@ -2,10 +2,12 @@ const myLibrary = [];
 const booksGrid = document.querySelector(".books");
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".open");
-const outputBox = document.querySelector("output");
 const submitButton = document.querySelector("#submitButton");
-const text = document.querySelector("#example");
-const text2 = document.querySelector("#example2")
+const text = document.querySelector("#first_name");
+const text2 = document.querySelector("#example2");
+const text3 = document.querySelector("#example3");
+const text4 = document.querySelector("#example4");
+const closeButton = document.querySelector(".close")
 
 function Book(title,author,pages,read) {
     this.title = title;
@@ -36,7 +38,6 @@ function libraryInformation() {
             libraryHtml += "</ul>" + "</div>";
         }
         booksGrid.innerHTML = libraryHtml;
-        console.log(libraryHtml);
 }
 
 
@@ -46,24 +47,32 @@ showButton.addEventListener("click", () => {
 });
 
 dialog.addEventListener("close", () => {
-    outputBox.value = 
-    dialog.returnValue === "default" 
-    ? "No return value" 
-    : `ReturnValue: ${dialog.returnValue}`;
-    console.log(dialog.returnValue);
-    libraryInformation();
+    if (dialog.returnValue === "Close") {
+        console.log("You just close the dialog");
+    }
+    else  {
+        let title = text.value;
+        let author = text2.value;
+        let pages = text3.value;
+        let read = text4.value;
+        addBookToLibrary(title,author,pages,read);
+        libraryInformation();
+    }
+
 });
 
-submitButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    let title = text.value;
-    let author = text2.value;
-    let pages = "123";
-    let read = "yes";
-    console.log(title,author,pages,read);
-    addBookToLibrary(title,author,pages,read);
-    dialog.close(text.value);
+closeButton.addEventListener("click", () => {
+    dialog.returnValue = "Close";
+    dialog.close();
 })
+
+dialog.addEventListener("keydown", theRealExample);
+
+function theRealExample(e) {
+    if(e.key === "Escape") {
+        dialog.returnValue = "Close";
+    }
+}
 
 libraryInformation();
 
