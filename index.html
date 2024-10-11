@@ -16,35 +16,28 @@
             <dialog>
                 <form action="main.js" method="dialog">
                     <p>
-                        <label for="example" aria-label="">Select an option</label>
-                        <p class="padding"><label for="first_name">FIRST NAME<strong><span aria-label="required">*</span></strong></label>
+                        <p class="padding"><label for="book_name">Name of the book:<strong><span aria-label="required">*</span></strong></label>
                             <br/>
-                            <input type="text" id="first_name" placeholder="Ivan" text name="firstName" required>
+                            <input type="text" id="book_name" placeholder="Fahrenheit 451" text name="bookName" required>
                         </p>
                     </p>
                     <p>
-                        <label for="example2">Another example</label>
-                        <select name="the_second_example" id="example2">
-                            <option value="default">hi....</option>
-                            <option value="apple">apple</option>
-                            <option value="banana">banana</option>
-                        </select>
+                        <p class="padding"><label for="book_author">Author of the book:<strong><span aria-label="required">*</span></strong></label>
+                            <br/>
+                            <input type="text" id="book_author" placeholder="Ray Bradbury" text name="bookAuthor" required>
+                        </p>
                     </p>
                     <p>
-                        <label for="example3">Another another example</label>
-                        <select name="the_second_example" id="example3">
-                            <option value="default">hi....</option>
-                            <option value="43">43</option>
-                            <option value="550">550</option>
-                        </select>
+                        <p class="padding"><label for="book_pages">How many pages:<strong><span aria-label="required">*</span></strong></label>
+                            <br/>
+                            <input type="number" id="book_pages" placeholder="272" text name="bookPages" required>
+                        </p>
                     </p>
                     <p>
-                        <label for="example4">Another another another example</label>
-                        <select name="the_second_example" id="example4">
-                            <option value="default">hi....</option>
-                            <option value="yes">yes</option>
-                            <option value="no">no</option>
-                        </select>
+                        <p class="padding"><label for="book_read">Have you already read it:<strong><span aria-label="required">*</span></strong></label>
+                            <br/>
+                            <input type="text" id="book_read" placeholder="yes" text name="bookRead" required>
+                        </p>
                     </p>
                     <button type="submit"  id="submitButton" value="submit">Submit</button>
                     <button class="close" formmethod="dialog" value="close">Close button</button>

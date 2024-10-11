@@ -3,10 +3,11 @@ const booksGrid = document.querySelector(".books");
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".open");
 const submitButton = document.querySelector("#submitButton");
-const text = document.querySelector("#first_name");
-const text2 = document.querySelector("#example2");
-const text3 = document.querySelector("#example3");
-const text4 = document.querySelector("#example4");
+const text = document.querySelector("#book_name");
+const text2 = document.querySelector("#book_author");
+const text3 = document.querySelector("#book_pages");
+const text4 = document.querySelector("#book_read");
+const myForm = document.querySelector("form");
 const closeButton = document.querySelector(".close")
 
 function Book(title,author,pages,read) {
@@ -57,6 +58,7 @@ dialog.addEventListener("close", () => {
         let read = text4.value;
         addBookToLibrary(title,author,pages,read);
         libraryInformation();
+        myForm.reset();
     }
 
 });
