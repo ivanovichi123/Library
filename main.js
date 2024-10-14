@@ -8,7 +8,13 @@ const text2 = document.querySelector("#book_author");
 const text3 = document.querySelector("#book_pages");
 const text4 = document.querySelector("#book_read");
 const myForm = document.querySelector("form");
-const closeButton = document.querySelector(".close")
+const closeButton = document.querySelector(".close");
+const theButton = document.createElement("button");
+console.log(theButton);
+theButton.innerHTML = '<button class="hello">hello</button>';
+
+
+
 
 function Book(title,author,pages,read) {
     this.title = title;
@@ -36,11 +42,19 @@ function libraryInformation() {
                 }
                 libraryHtml += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
             }
-            libraryHtml += "</ul>" + "</div>";
+            libraryHtml += "</ul>" + theButton.innerHTML + "</div>";
         }
         booksGrid.innerHTML = libraryHtml;
-}
+        let theSecondExample = document.querySelectorAll(".hello");
+        for (let i = 0;i < theSecondExample.length;i++) {
+            let theThirdExample = theSecondExample[i];
+            console.log(theThirdExample);
+            theThirdExample.addEventListener("click",() => {
+                alert("FINALLY");
+            })
+        }
 
+}
 
 
 showButton.addEventListener("click", () => {
@@ -76,6 +90,9 @@ function theRealExample(e) {
     }
 }
 
+
+
+
 libraryInformation();
 
 
@@ -85,4 +102,18 @@ libraryInformation();
 
 
 
-
+// function libraryInformation() {
+//     let libraryHtml = "";
+//         for (let key in myLibrary) {
+//             libraryHtml += "<div>" + myLibrary[key].title;
+//             libraryHtml += "<ul>";
+//             for (let item in myLibrary[key]) {
+//                 if (item === "title") {
+//                     continue
+//                 }
+//                 libraryHtml += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
+//             }
+//             libraryHtml += '</ul> <button> Erase book </button> </div>';
+//         }
+//         booksGrid.innerHTML = libraryHtml;
+// }
