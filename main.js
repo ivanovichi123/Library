@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 const booksGrid = document.querySelector(".books");
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".open");
@@ -10,11 +10,7 @@ const text4 = document.querySelector("#book_read");
 const myForm = document.querySelector("form");
 const closeButton = document.querySelector(".close");
 const theButton = document.createElement("button");
-console.log(theButton);
-theButton.innerHTML = '<button class="hello">hello</button>';
-
-
-
+theButton.innerHTML = '<button class="hello">Erase book</button>';
 
 function Book(title,author,pages,read) {
     this.title = title;
@@ -28,32 +24,43 @@ function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(newBook);
 } 
 
-const theHobbit = addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295 pages","not read yet");
-const iRobot = addBookToLibrary("I Robot", "Isaac Asimov", "758 pages", "not read yet");
-
 function libraryInformation() {
-    let libraryHtml = "";
-        for (let key in myLibrary) {
-            libraryHtml += "<div>" + myLibrary[key].title;
-            libraryHtml += "<ul>";
-            for (let item in myLibrary[key]) {
-                if (item === "title") {
-                    continue
-                }
-                libraryHtml += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
-            }
-            libraryHtml += "</ul>" + theButton.innerHTML + "</div>";
+    console.log("the real library", myLibrary);
+    let letsCount = 0;
+    for (key in myLibrary) {
+        if (letsCount < myLibrary.length - 1) {
+            console.log(letsCount);
+            console.log(myLibrary.length);
+            letsCount += 1;
+            continue;
         }
-        booksGrid.innerHTML = libraryHtml;
+        let newDiv = document.createElement("div");
+        newDiv.id = letsCount;
+        newDiv.innerHTML = myLibrary[key].title;
+        newDiv.innerHTML += "<ul>";
+        for(let item in myLibrary[key]) {
+            if (item === "title") {
+                continue;
+            }
+            newDiv.innerHTML += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
+        }
+        newDiv.innerHTML += "</ul>" + theButton.innerHTML + "</div>";
+        console.log(letsCount);
+        letsCount += 1;
+        booksGrid.appendChild(newDiv);
+    }
         let theSecondExample = document.querySelectorAll(".hello");
         for (let i = 0;i < theSecondExample.length;i++) {
             let theThirdExample = theSecondExample[i];
-            console.log(theThirdExample);
             theThirdExample.addEventListener("click",() => {
-                alert("FINALLY");
+                delete myLibrary[i];
+                let newArray = myLibrary.filter(obj => Object.keys(obj).length !== 0);
+                myLibrary = newArray;
+                let div = document.getElementById(i);
+                div.remove();
             })
         }
-
+        console.log(booksGrid.innerHTML);
 }
 
 
@@ -89,31 +96,3 @@ function theRealExample(e) {
         dialog.returnValue = "Close";
     }
 }
-
-
-
-
-libraryInformation();
-
-
-
-
-
-
-
-
-// function libraryInformation() {
-//     let libraryHtml = "";
-//         for (let key in myLibrary) {
-//             libraryHtml += "<div>" + myLibrary[key].title;
-//             libraryHtml += "<ul>";
-//             for (let item in myLibrary[key]) {
-//                 if (item === "title") {
-//                     continue
-//                 }
-//                 libraryHtml += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
-//             }
-//             libraryHtml += '</ul> <button> Erase book </button> </div>';
-//         }
-//         booksGrid.innerHTML = libraryHtml;
-// }
