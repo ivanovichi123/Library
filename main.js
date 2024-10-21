@@ -11,6 +11,9 @@ const myForm = document.querySelector("form");
 const closeButton = document.querySelector(".close");
 const theButton = document.createElement("button");
 theButton.innerHTML = '<button class="hello">Erase book</button>';
+const readButton = document.createElement("button");
+readButton.innerHTML = '<button class="read">Read/Not read</button>';
+let theStopper = 1;
 
 function Book(title,author,pages,read) {
     this.title = title;
@@ -24,13 +27,13 @@ function addBookToLibrary(title,author,pages,read) {
     myLibrary.push(newBook);
 } 
 
-function libraryInformation() {
+function libraryInformation(read) {
     console.log("the real library", myLibrary);
     let letsCount = 0;
     for (key in myLibrary) {
-        if (letsCount < myLibrary.length - 1) {
+        if (letsCount < myLibrary.length - 1 && read == 1) {
             console.log(letsCount);
-            console.log(myLibrary.length);
+            console.log(myLibrary.length);  
             letsCount += 1;
             continue;
         }
@@ -44,7 +47,7 @@ function libraryInformation() {
             }
             newDiv.innerHTML += "<li>" + item + ": " + myLibrary[key][item] + "</li>";
         }
-        newDiv.innerHTML += "</ul>" + theButton.innerHTML + "</div>";
+        newDiv.innerHTML += "</ul>" + theButton.innerHTML + readButton.innerHTML +"</div>";
         console.log(letsCount);
         letsCount += 1;
         booksGrid.appendChild(newDiv);
@@ -58,6 +61,26 @@ function libraryInformation() {
                 myLibrary = newArray;
                 let div = document.getElementById(i);
                 div.remove();
+            })
+        }
+        let theFourthExample = document.querySelectorAll(".read");
+        for (let i = 0;i < theFourthExample.length;i++) {
+            let theFifthExample = theFourthExample[i];
+            theFifthExample.addEventListener("click", () => {
+                console.log(myLibrary[i].read);
+                let change = myLibrary[i].read;
+                if (change === "Yes") {
+                    myLibrary[i].read = "No";
+                    booksGrid.innerHTML = "";
+                    let hey = 0;
+                    libraryInformation(hey);
+                }
+                if (change === "No") {
+                    myLibrary[i].read = "Yes";
+                    booksGrid.innerHTML = "";
+                    let hey = 0;
+                    libraryInformation(hey);
+                }
             })
         }
         console.log(booksGrid.innerHTML);
@@ -80,7 +103,7 @@ dialog.addEventListener("close", () => {
         let pages = text3.value;
         let read = text4Value;
         addBookToLibrary(title,author,pages,read);
-        libraryInformation();
+        libraryInformation(theStopper);
         myForm.reset();
     }
 
