@@ -6,7 +6,7 @@ const submitButton = document.querySelector("#submitButton");
 const text = document.querySelector("#book_name");
 const text2 = document.querySelector("#book_author");
 const text3 = document.querySelector("#book_pages");
-const text4 = document.querySelector("#book_read");
+const text4 = document.getElementsByName("book_read");
 const myForm = document.querySelector("form");
 const closeButton = document.querySelector(".close");
 const theButton = document.createElement("button");
@@ -69,6 +69,8 @@ showButton.addEventListener("click", () => {
 });
 
 dialog.addEventListener("close", () => {
+    displayRadioValue();
+    let text4Value = displayRadioValue();
     if (dialog.returnValue === "Close") {
         console.log("You just close the dialog");
     }
@@ -76,7 +78,7 @@ dialog.addEventListener("close", () => {
         let title = text.value;
         let author = text2.value;
         let pages = text3.value;
-        let read = text4.value;
+        let read = text4Value;
         addBookToLibrary(title,author,pages,read);
         libraryInformation();
         myForm.reset();
@@ -96,3 +98,19 @@ function theRealExample(e) {
         dialog.returnValue = "Close";
     }
 }
+
+
+
+
+function displayRadioValue() {
+    var ele = document.getElementsByName('book_read');
+    let value = 0
+    for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+            value = ele[i].value;
+            console.log(value);
+        }
+    }
+    return value;
+}
+

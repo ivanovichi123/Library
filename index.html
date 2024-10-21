@@ -34,10 +34,9 @@
                         </p>
                     </p>
                     <p>
-                        <p class="padding"><label for="book_read">Have you already read it:<strong><span aria-label="required">*</span></strong></label>
-                            <br/>
-                            <input type="text" id="book_read" placeholder="yes" text name="bookRead" required>
-                        </p>
+                        <p class="padding">Have you read it: </p>
+                        <input type="radio" name="book_read" value="Yes" required>Yes
+                        <input type="radio" name="book_read" value="No">No
                     </p>
                     <button type="submit"  id="submitButton" value="submit">Submit</button>
                     <button class="close" formmethod="dialog" value="close">Close button</button>
