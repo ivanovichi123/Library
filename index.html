@@ -10,7 +10,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <p>Add your books!!!</p>
+            <p class="title">Your</p>
+            <p class="title">Library!!</p>
         </div>
         <div class="form">
             <dialog>
@@ -18,27 +19,27 @@
                     <p>
                         <p class="padding"><label for="book_name">Name of the book:<strong><span aria-label="required">*</span></strong></label>
                             <br/>
-                            <input type="text" id="book_name" placeholder="Fahrenheit 451" text name="bookName" required>
+                            <input class="input" type="text" id="book_name" placeholder="Fahrenheit 451" text name="bookName" required>
                         </p>
                     </p>
                     <p>
                         <p class="padding"><label for="book_author">Author of the book:<strong><span aria-label="required">*</span></strong></label>
                             <br/>
-                            <input type="text" id="book_author" placeholder="Ray Bradbury" text name="bookAuthor" required>
+                            <input class="input" type="text" id="book_author" placeholder="Ray Bradbury" text name="bookAuthor" required>
                         </p>
                     </p>
                     <p>
                         <p class="padding"><label for="book_pages">How many pages:<strong><span aria-label="required">*</span></strong></label>
                             <br/>
-                            <input type="number" id="book_pages" placeholder="272" text name="bookPages" required>
+                            <input class="input" type="number" id="book_pages" placeholder="272" text name="bookPages" required>
                         </p>
                     </p>
                     <p>
                         <p class="padding">Have you read it: </p>
-                        <input type="radio" name="book_read" value="Yes" required>Yes
-                        <input type="radio" name="book_read" value="No">No
+                        <input class="radio" type="radio" name="book_read" value="Yes" required>Yes
+                        <input class="radio" type="radio" name="book_read" value="No">No
                     </p>
-                    <button type="submit"  id="submitButton" value="submit">Submit</button>
+                    <button class="submit" type="submit"  id="submitButton" value="submit">Submit</button>
                     <button class="close" formmethod="dialog" value="close">Close button</button>
                 </form>
             </dialog>
